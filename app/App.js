@@ -1,54 +1,53 @@
-import React, {Component} from 'react'
-import { SafeAreaView, StyleSheet, Text, View, Button } from 'react-native'
+import React, {useEffect, useState, useMemo} from 'react'
+import { SafeAreaView, StyleSheet, Text, View, Button, FlatList } from 'react-native'
 
 import { connect } from 'react-redux'
-import { addTodo, thunkTodo } from './actions'
+import { addList } from './actions'
 
-const mapStateToProps = (state, ownProps) => {
+// components
+import Item from './component/Item'
+import Input from './component/Input'
+
+const mapStateToProps = (state) => {
   return {
-    test: state.todo.test
+    list: state.todo.list
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    todo: (num) => {
-      dispatch(addTodo(num))
+    addList: (arr) => {
+      dispatch(addList(arr))
     }
   }
 }
-
-const Apps = ({test, todo}) => {
+const Apps = ({list, addList}) => {
+  const [state, setstate] = useState(5)
   return(
     <SafeAreaView>
+
       <View>
-        <Text>
-          todo list
-        </Text>
+        <Text style={styles.header}>list</Text>
       </View>
+
       <View>
-        <Text>
-          redux 数据
-        </Text>
+        <Input subCallback={addList} lists={list}/>
       </View>
-      <View>
-        <Text>
-          {test}
-        </Text>
-      </View>
-      <View>
-        <Button
-          onPress={() => todo(1)}
-          title="click me"
-        />
-      </View>
-      </SafeAreaView>
+      <FlatList 
+        data={list}
+        renderItem={Item}
+        keyExtractor={(data, id) => id.toString()}
+      />
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-
+  header: {
+    fontSize: 36,
+    marginBottom: 48,
+    textAlign: 'center'
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Apps)
-// export default App

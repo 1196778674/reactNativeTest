@@ -1,21 +1,22 @@
-import {ADD_TODO, SET_NAME} from '../actions/actionType'
+import {ADD_LIST, REMOVE_LIST, RESET_LIST} from '../actions/actionType'
 const initState = {
-    test: 1,
-    geturl: '点击得到链接'
+    list: []
 }
-
 const reducer = {
-    [ADD_TODO](state, text){
-        return {...state, test: state.test + text}
+    [ADD_LIST](state, lists){
+        return {...state, list: lists}
     },
-    [SET_NAME](state, text){
-        return {...state, geturl: text}
+    [REMOVE_LIST](state, text){
+        return {...state, list: text}
+    },
+    [RESET_LIST](state, text){
+        return {...state, list: text}
     }
 }
 export default (state = initState, action) => {
-    const {type, text} = action;
+    const {type, data} = action;
     if(reducer[type]){
-        return reducer[type](state, text)
+        return reducer[type](state, data)
     } else {
         return state
     }

@@ -1,22 +1,19 @@
-import { ADD_TODO, SET_NAME } from './actionType'
-export const addTodo = text => ({
-    type: ADD_TODO,
-    text
+import { ADD_LIST, REMOVE_LIST, RESET_LIST } from './actionType'
+export const addList = data => ({
+    type: ADD_LIST,
+    data
 })
-
-// thunk
-export const thunkTodo = () => dispatch => {
-    asyncGet(dispatch);
+export const removeList = data => ({
+    type: REMOVE_LIST,
+    data
+})
+export const resetList = () => dispatch => {
+    setTimeout(() => {
+        dispatch(resetListFun([]))
+    }, 2000);
 }
-// 异步请求
-const asyncGet = (dispatch) => {
-    setTimeout(()=>{
-        dispatch(setName('dispatch'))
-    },2000)
-}
-
-export const setName = text => ({
-    type: SET_NAME,
-    text
+const resetListFun = data => ({
+    type: RESET_LIST,
+    data
 })
 

@@ -1,2 +1,3 @@
-export const ADD_TODO = 'ADD_TODO'
-export const SET_NAME = 'SET_NAME'
+export const ADD_LIST = 'ADD_LIST'
+export const REMOVE_LIST = 'REMOVE_LIST'
+export const RESET_LIST = 'RESET_LIST'
