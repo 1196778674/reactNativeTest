@@ -1,22 +1,26 @@
 import React, {Component} from 'react'
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, Button } from 'react-native'
 
 import { connect } from 'react-redux'
 import { addTodo, thunkTodo } from './actions'
 
-const mapStateToProps = state => ({
-  test: state.todo.test,
-  geturl: state.todo.geturl
-})
-const mapDispatchToProps = dispatch => ({
-  todo: num => dispatch(addTodo(num)),
-  thunk: num => dispatch(thunkTodo()),
-})
+const mapStateToProps = (state, ownProps) => {
+  return {
+    test: state.todo.test
+  }
+}
 
-class App extends Component {
-  render() {
-    return (
-      <SafeAreaView>
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    todo: (num) => {
+      dispatch(addTodo(num))
+    }
+  }
+}
+
+const Apps = ({test, todo}) => {
+  return(
+    <SafeAreaView>
       <View>
         <Text>
           todo list
@@ -29,17 +33,22 @@ class App extends Component {
       </View>
       <View>
         <Text>
-          {this.props.geturl}
+          {test}
         </Text>
       </View>
+      <View>
+        <Button
+          onPress={() => todo(1)}
+          title="click me"
+        />
+      </View>
       </SafeAreaView>
-    )
-  }
+  )
 }
 
 const styles = StyleSheet.create({
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Apps)
 // export default App
