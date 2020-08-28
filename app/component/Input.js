@@ -4,9 +4,11 @@ import { StyleSheet, Text, View, Button, TextInput} from 'react-native'
 export default Input = ({lists, subCallback}) => {
     const [value, setvalue] = useState('')
     const subFun = (val) => {
-        let list = lists || []
-        list.push({id: list.length-1, name: val})
-        subCallback(list)
+        if(!val.trim()) return
+        let arr = lists.splice(0, lists.length)
+        arr.unshift({id: arr.length-1, name: val})
+        subCallback(arr)
+        setvalue('')
     }
     return (
         <View style={styles.container}>

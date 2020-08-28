@@ -1,6 +1,6 @@
 import {ADD_LIST, REMOVE_LIST, RESET_LIST} from '../actions/actionType'
 const initState = {
-    list: []
+    list: Array(0).fill({})
 }
 const reducer = {
     [ADD_LIST](state, lists){

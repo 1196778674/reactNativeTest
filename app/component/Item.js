@@ -4,15 +4,16 @@ import { StyleSheet, Text, View} from 'react-native'
 export default Item = ({item}) => {
     return (
         <View style={styles.item}>
-            <Text>{item.name}</Text>
+            <Text>{item.name} | {item.id}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     item: {
-        padding: 20,
+        backgroundColor: '#f9c2ff',
+        padding: 5,
         marginVertical: 8,
-        marginHorizontal: 16,  
+        marginHorizontal: 16, 
     }
 })

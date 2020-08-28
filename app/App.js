@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useMemo} from 'react'
-import { SafeAreaView, StyleSheet, Text, View, Button, FlatList } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, StatusBar, FlatList } from 'react-native'
 
 import { connect } from 'react-redux'
 import { addList } from './actions'
@@ -24,8 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 const Apps = ({list, addList}) => {
   const [state, setstate] = useState(5)
   return(
-    <SafeAreaView>
-
+    <SafeAreaView style={styles.container}>
       <View>
         <Text style={styles.header}>list</Text>
       </View>
@@ -43,6 +42,10 @@ const Apps = ({list, addList}) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
   header: {
     fontSize: 36,
     marginBottom: 48,
