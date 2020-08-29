@@ -8,6 +8,8 @@ import { addList } from './actions'
 import Item from './component/Item'
 import Input from './component/Input'
 
+import { Button, Toast } from '@ant-design/react-native';
+
 const mapStateToProps = (state) => {
   return {
     list: state.todo.list
@@ -22,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 const Apps = ({list, addList}) => {
-  const [state, setstate] = useState(5)
+  
   return(
     <SafeAreaView style={styles.container}>
       <View>
@@ -37,6 +39,9 @@ const Apps = ({list, addList}) => {
         renderItem={Item}
         keyExtractor={(data, id) => id.toString()}
       />
+      <Button type="primary" onPress={() => {
+        Toast.info('this', 1)
+      }}>primary</Button>
     </SafeAreaView>
   )
 }
