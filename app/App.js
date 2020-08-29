@@ -33,9 +33,11 @@ const Apps = ({list, addList, removeList, resetList}) => {
     let arr = list.splice(0, list.length)
     let newArr = arr.filter(v => v.id != id)
     removeList(newArr)
+    Toast.success('删除成功', 1)
   }
   const resetFun = () => {
     resetList()
+    Toast.success('清除成功', 1)
   }
   return(
     <SafeAreaView style={styles.container}>
