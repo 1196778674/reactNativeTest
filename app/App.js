@@ -2,10 +2,9 @@ import React, {useEffect, useState, useMemo} from 'react'
 import { SafeAreaView, StyleSheet, Text, View, StatusBar, FlatList } from 'react-native'
 
 import { connect } from 'react-redux'
-import { addList } from './actions'
+import { addList, removeList, resetList } from './actions'
 
 // components
-import Item from './component/Item'
 import Input from './component/Input'
 
 import { Button, Toast } from '@ant-design/react-native';
@@ -20,11 +19,24 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addList: (arr) => {
       dispatch(addList(arr))
+    },
+    removeList: (arr) => {
+      dispatch(removeList(arr))
+    },
+    resetList: () => {
+      dispatch(resetList())
     }
   }
 }
-const Apps = ({list, addList}) => {
-  
+const Apps = ({list, addList, removeList, resetList}) => {
+  const removeFun = (id) => {
+    let arr = list.splice(0, list.length)
+    let newArr = arr.filter(v => v.id != id)
+    removeList(newArr)
+  }
+  const resetFun = () => {
+    resetList()
+  }
   return(
     <SafeAreaView style={styles.container}>
       <View>
@@ -34,14 +46,15 @@ const Apps = ({list, addList}) => {
       <View>
         <Input subCallback={addList} lists={list}/>
       </View>
-      <FlatList 
-        data={list}
-        renderItem={Item}
-        keyExtractor={(data, id) => id.toString()}
-      />
-      <Button type="primary" onPress={() => {
-        Toast.info('this', 1)
-      }}>primary</Button>
+
+      <View>
+        {
+          list.map(item => (
+            <Text style={styles.item} onPress={() => removeFun(item.id)} key={item.id}>{item.name} | {item.id}</Text>
+          ))
+        }
+      </View>
+      <Button type="default" onPress={() => resetFun()}>reset</Button>
     </SafeAreaView>
   )
 }
@@ -55,7 +68,13 @@ const styles = StyleSheet.create({
     fontSize: 36,
     marginBottom: 48,
     textAlign: 'center'
-  }
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 5,
+    marginVertical: 8,
+    marginHorizontal: 16, 
+}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Apps)
