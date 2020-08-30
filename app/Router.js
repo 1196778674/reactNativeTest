@@ -9,15 +9,14 @@ const router = createStackNavigator({
         Todo: {screen: Todo},
         Home: {
             screen: Home,
-            navigationOptions:{
-                title:'首页', 
-                tabBarVisible: false, 
-                swipeEnabled: true,    
-            }
+            navigationOptions: ({navigation}) => ({
+                header: null
+            })
         }
     },
     {
-        initialRouteName: 'Home'
+        initialRouteName: 'Home',
+        headerMode: 'screen'
     });
 
 const Router = createAppContainer(router)

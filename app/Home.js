@@ -18,16 +18,22 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const Home = ({ changeTab }) => {
+const Home = ({ changeTab, navigation }) => {
+    // navigation
     const [tab, setTab] = useState(1)
 
-    const renderTab = (tab) => (
-        <View>
-            <Text>
-                这是 {tab} 模板！
-            </Text>
-        </View>
-    )
+    const renderTab = (tab) => {
+        if(tab === 3){
+            return navigation.push('Todo')
+        }
+        return (
+            <View>
+                <Text>
+                    这是 {tab} 模板！
+                </Text>
+            </View>
+        )
+    }
     return (
         <TabBar
         unselectedTintColor="#949494"
