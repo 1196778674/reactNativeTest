@@ -4,7 +4,6 @@ import { TabBar, Icon } from '@ant-design/react-native';
 import { connect } from 'react-redux'
 import { changeTab } from './actions'
 
-
 const mapStateToProps = (state) => {
     return {
     tab: state.todo.tab
