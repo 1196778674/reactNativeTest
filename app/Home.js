@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View, Text, Image } from 'react-native'
-import { TabBar, Icon } from '@ant-design/react-native';
+import { TabBar, Icon, Button } from '@ant-design/react-native';
 import { connect } from 'react-redux'
 import { changeTab } from './actions'
 
@@ -23,14 +23,14 @@ const Home = ({ changeTab, navigation }) => {
     const [tab, setTab] = useState(1)
 
     const renderTab = (tab) => {
-        if(tab === 3){
-            return navigation.push('Todo')
-        }
         return (
             <View>
                 <Text>
                     这是 {tab} 模板！
                 </Text>
+                <Button onPress={() => {
+                    return navigation.push('Todo')
+                }}>home</Button>
             </View>
         )
     }

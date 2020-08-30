@@ -10,7 +10,7 @@ const router = createStackNavigator({
         Home: {
             screen: Home,
             navigationOptions: ({navigation}) => ({
-                header: null
+                headerShown: false,
             })
         }
     },
