@@ -1,4 +1,4 @@
-import { ADD_LIST, REMOVE_LIST, RESET_LIST } from './actionType'
+import { ADD_LIST, REMOVE_LIST, RESET_LIST, CHANGE_TAB } from './actionType'
 export const addList = data => ({
     type: ADD_LIST,
     data
@@ -17,3 +17,8 @@ const resetListFun = data => ({
     data
 })
 
+// 切换tab
+export const changeTab = data => ({
+    type: CHANGE_TAB,
+    data
+})

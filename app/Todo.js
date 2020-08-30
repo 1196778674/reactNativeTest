@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-const Apps = ({list, addList, removeList, resetList}) => {
+const Apps = ({list, addList, removeList, resetList, navigation}) => {
   const removeFun = (id) => {
     let arr = list.splice(0, list.length)
     let newArr = arr.filter(v => v.id != id)
@@ -38,6 +38,9 @@ const Apps = ({list, addList, removeList, resetList}) => {
   const resetFun = () => {
     resetList()
     Toast.success('清除成功', 1)
+  }
+  const goHome = () => {
+    navigation.push('Home')
   }
   return(
     <SafeAreaView style={styles.container}>
@@ -57,6 +60,7 @@ const Apps = ({list, addList, removeList, resetList}) => {
         }
       </View>
       <Button type="default" onPress={() => resetFun()}>reset</Button>
+      <Button type="default" onPress={() => goHome()}>home</Button>
     </SafeAreaView>
   )
 }

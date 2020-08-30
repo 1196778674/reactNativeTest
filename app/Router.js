@@ -1,24 +1,12 @@
-# reactNativeTest
-
-安装antd UI
-npm install @ant-design/react-native --save
-
-import { Provider as AntProvider } from '@ant-design/react-native'
-
-安装字体库
-npm install @ant-design/icons-react-native --save
-
-建立连接
-react-native link @ant-design/icons-react-native 
-
-如果不成功执行 
-npx react-native link
-
-配置路由
+import React from 'react'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
+
 import Home from './Home'
+import Todo from './Todo'
+
 const router = createStackNavigator({
+        Todo: {screen: Todo},
         Home: {
             screen: Home,
             navigationOptions:{
@@ -33,5 +21,5 @@ const router = createStackNavigator({
     });
 
 const Router = createAppContainer(router)
-export default Router
 
+export default Router
