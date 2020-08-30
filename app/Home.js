@@ -21,6 +21,14 @@ const mapDispatchToProps = (dispatch) => {
 
 const Home = ({ changeTab }) => {
     const [tab, setTab] = useState(1)
+
+    const renderTab = (tab) => (
+        <View>
+            <Text>
+                这是 {tab} 模板！
+            </Text>
+        </View>
+    )
     return (
         <TabBar
         unselectedTintColor="#949494"
@@ -53,6 +61,7 @@ const Home = ({ changeTab }) => {
                 }}
                 data-seed="logId"
             >
+            {renderTab(tab)}
             </TabBar.Item>
             <TabBar.Item
                 title="首页"
@@ -80,6 +89,7 @@ const Home = ({ changeTab }) => {
                 }}
                 data-seed="logId"
             >
+            {renderTab(tab)}
             </TabBar.Item>
             <TabBar.Item
                 title="首页"
@@ -107,6 +117,7 @@ const Home = ({ changeTab }) => {
                 }}
                 data-seed="logId"
             >
+            {renderTab(tab)}
             </TabBar.Item>
             <TabBar.Item
                 title="首页"
@@ -134,28 +145,16 @@ const Home = ({ changeTab }) => {
                 }}
                 data-seed="logId"
             >
+            {renderTab(tab)}
             </TabBar.Item>
         </TabBar>
     )
 }
 
 const styles = StyleSheet.create({
-    icon1: {
-        width: 25,
-        height: 25,
-    },
     tinyLogo: {
         width: 22,
         height: 22,
-    },
-    icon2: {
-
-    },
-    icon3: {
-
-    },
-    icon4: {
-
     }
 })
 

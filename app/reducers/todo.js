@@ -14,7 +14,6 @@ const reducer = {
         return {...state, list: text}
     },
     [CHANGE_TAB](state, text){
-        alert(text)
         return {...state, tab: text}
     }
 }
