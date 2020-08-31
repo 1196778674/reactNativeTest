@@ -46,11 +46,11 @@ export default createMaterialBottomTabNavigator(
                     </View>
                 )),
                 tabBarOnPress: ({navigation, defaultHandler}) => {
-                    defaultHandler()
-                    // 可做登录校验
-                    console.log('\n\n------ begin: 登录校验 ------')
-                    console.log('校验是否登录')
-                    console.log('------ end: 登录校验 ------\n\n')
+                    if(true) {
+                        navigation.navigate("Login")
+                    } else {
+                        defaultHandler()
+                    }
                 }
             }},
     },
