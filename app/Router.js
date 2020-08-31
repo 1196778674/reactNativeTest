@@ -22,7 +22,7 @@ const router = createStackNavigator({
     }
 },
 {
-    initialRouteName: 'Home'
+    initialRouteName: 'Login'
 });
 
 const Router = createAppContainer(router)
