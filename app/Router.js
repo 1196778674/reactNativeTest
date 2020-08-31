@@ -2,7 +2,7 @@ import React from 'react'
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator, TransitionPresets} from 'react-navigation-stack'
 
-import Home from './Home'
+import Home from './page/Home'
 import Todo from './Todo'
 import Login from './page/Login';
 
@@ -23,7 +23,7 @@ const router = createStackNavigator({
     }
 },
 {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
         ...TransitionPresets.DefaultTransition,
     }

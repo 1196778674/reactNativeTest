@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View, Text, Image } from 'react-native'
 import { TabBar, Icon, Button } from '@ant-design/react-native';
 import { connect } from 'react-redux'
-import { changeTab } from './actions'
+import { changeTab } from '../actions'
+
+// component
+import One from './Home/one';
+import Two from './Home/two';
+import Three from './Home/three';
+import Four from './Home/four';
 
 const mapStateToProps = (state) => {
     return {
-    tab: state.todo.tab
+    tab: state.Tab.tab
 }
 }
 
@@ -23,16 +29,10 @@ const Home = ({ changeTab, navigation }) => {
     const [tab, setTab] = useState(1)
 
     const renderTab = (tab) => {
-        return (
-            <View>
-                <Text>
-                    这是 {tab} 模板！
-                </Text>
-                <Button onPress={() => {
-                    return navigation.push('Todo')
-                }}>home</Button>
-            </View>
-        )
+        if(tab === 1) return (<One/>)
+        if(tab === 2) return (<Two/>)
+        if(tab === 3) return (<Three/>)
+        if(tab === 4) return (<Four/>)
     }
     return (
         <TabBar
@@ -41,13 +41,13 @@ const Home = ({ changeTab, navigation }) => {
         barTintColor="white"
         >
             <TabBar.Item
-                title="首页"
-                key="首页"
+                title="One"
+                key="One"
                 icon={
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/home.png')}
+                            source={require('../images/home.png')}
                         />
                     )
                 }
@@ -55,7 +55,7 @@ const Home = ({ changeTab, navigation }) => {
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/homeSelect.png')}
+                            source={require('../images/homeSelect.png')}
                         />
                     )
                 }
@@ -64,18 +64,17 @@ const Home = ({ changeTab, navigation }) => {
                     setTab(1)
                     changeTab(1)
                 }}
-                data-seed="logId"
             >
             {renderTab(tab)}
             </TabBar.Item>
             <TabBar.Item
-                title="首页"
-                key="首页"
+                title="Two"
+                key="Two"
                 icon={
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/home.png')}
+                            source={require('../images/home.png')}
                         />
                     )
                 }
@@ -83,7 +82,7 @@ const Home = ({ changeTab, navigation }) => {
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/homeSelect.png')}
+                            source={require('../images/homeSelect.png')}
                         />
                     )
                 }
@@ -92,18 +91,17 @@ const Home = ({ changeTab, navigation }) => {
                     setTab(2)
                     changeTab(2)
                 }}
-                data-seed="logId"
             >
             {renderTab(tab)}
             </TabBar.Item>
             <TabBar.Item
-                title="首页"
-                key="首页"
+                title="Three"
+                key="Three"
                 icon={
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/home.png')}
+                            source={require('../images/home.png')}
                         />
                     )
                 }
@@ -111,7 +109,7 @@ const Home = ({ changeTab, navigation }) => {
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/homeSelect.png')}
+                            source={require('../images/homeSelect.png')}
                         />
                     )
                 }
@@ -120,18 +118,17 @@ const Home = ({ changeTab, navigation }) => {
                     setTab(3)
                     changeTab(3)
                 }}
-                data-seed="logId"
             >
             {renderTab(tab)}
             </TabBar.Item>
             <TabBar.Item
-                title="首页"
-                key="首页"
+                title="我的"
+                key="my"
                 icon={
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/home.png')}
+                            source={require('../images/home.png')}
                         />
                     )
                 }
@@ -139,7 +136,7 @@ const Home = ({ changeTab, navigation }) => {
                     (
                         <Image
                             style={styles.tinyLogo}
-                            source={require('./images/homeSelect.png')}
+                            source={require('../images/homeSelect.png')}
                         />
                     )
                 }
@@ -148,7 +145,6 @@ const Home = ({ changeTab, navigation }) => {
                     setTab(4)
                     changeTab(4)
                 }}
-                data-seed="logId"
             >
             {renderTab(tab)}
             </TabBar.Item>
