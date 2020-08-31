@@ -1,163 +1,72 @@
-import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet, View, Text, Image } from 'react-native'
-import { TabBar, Icon, Button } from '@ant-design/react-native';
-import { connect } from 'react-redux'
-import { changeTab } from '../actions'
+import React from 'react'
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { StyleSheet, View, Image } from 'react-native'
 
-// component
-import One from './Home/one';
-import Two from './Home/two';
-import Three from './Home/three';
-import Four from './Home/four';
+import One from './Home/one'
+import Two from './Home/two'
+import Three from './Home/three'
+import Four from './Home/four'
 
-const mapStateToProps = (state) => {
-    return {
-    tab: state.Tab.tab
-}
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeTab: (tab) => {
-            dispatch(changeTab(tab))
-        }
-    }
-}
-
-const Home = ({ changeTab, navigation }) => {
-    // navigation
-    const [tab, setTab] = useState(1)
-
-    const renderTab = (tab) => {
-        if(tab === 1) return (<One/>)
-        if(tab === 2) return (<Two/>)
-        if(tab === 3) return (<Three/>)
-        if(tab === 4) return (<Four/>)
-    }
-    return (
-        <TabBar
-        unselectedTintColor="#949494"
-        tintColor="#33A3F4"
-        barTintColor="white"
-        >
-            <TabBar.Item
-                title="One"
-                key="One"
-                icon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/home.png')}
-                        />
-                    )
+export default createMaterialBottomTabNavigator(
+    {
+        One: { screen: One,
+            navigationOptions:{
+                tabBarLabel: '首页',
+                tabBarIcon: (() => (
+                    <View>
+                        <Image style={styles.icon} source={require('../images/home.png')}/> 
+                    </View>
+                ))
+            }},
+        Two: { screen: Two,
+            navigationOptions:{
+                tabBarLabel: '列表1',
+                tabBarIcon: (() => (
+                    <View>
+                        <Image style={styles.icon} source={require('../images/list.png')}/> 
+                    </View>
+                ))
+            }},
+        Three: { screen: Three,
+            navigationOptions:{
+                tabBarLabel: '列表1',
+                tabBarIcon: (() => (
+                    <View>
+                        <Image style={styles.icon} source={require('../images/detail.png')}/> 
+                    </View>
+                ))
+            }},
+        Four: { screen: Four,
+            navigationOptions:{
+                tabBarLabel: '我的',
+                tabBarIcon: (() => (
+                    <View>
+                        <Image style={styles.icon} source={require('../images/my.png')}/> 
+                    </View>
+                )),
+                tabBarOnPress: ({navigation, defaultHandler}) => {
+                    defaultHandler()
+                    // 可做登录校验
+                    console.log('\n\n------ begin: 登录校验 ------')
+                    console.log('校验是否登录')
+                    console.log('------ end: 登录校验 ------\n\n')
                 }
-                selectedIcon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/homeSelect.png')}
-                        />
-                    )
-                }
-                selected={tab === 1}
-                onPress={() => {
-                    setTab(1)
-                    changeTab(1)
-                }}
-            >
-            {renderTab(tab)}
-            </TabBar.Item>
-            <TabBar.Item
-                title="Two"
-                key="Two"
-                icon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/home.png')}
-                        />
-                    )
-                }
-                selectedIcon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/homeSelect.png')}
-                        />
-                    )
-                }
-                selected={tab === 2}
-                onPress={() => {
-                    setTab(2)
-                    changeTab(2)
-                }}
-            >
-            {renderTab(tab)}
-            </TabBar.Item>
-            <TabBar.Item
-                title="Three"
-                key="Three"
-                icon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/home.png')}
-                        />
-                    )
-                }
-                selectedIcon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/homeSelect.png')}
-                        />
-                    )
-                }
-                selected={tab === 3}
-                onPress={() => {
-                    setTab(3)
-                    changeTab(3)
-                }}
-            >
-            {renderTab(tab)}
-            </TabBar.Item>
-            <TabBar.Item
-                title="我的"
-                key="my"
-                icon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/home.png')}
-                        />
-                    )
-                }
-                selectedIcon={
-                    (
-                        <Image
-                            style={styles.tinyLogo}
-                            source={require('../images/homeSelect.png')}
-                        />
-                    )
-                }
-                selected={tab === 4}
-                onPress={() => {
-                    setTab(4)
-                    changeTab(4)
-                }}
-            >
-            {renderTab(tab)}
-            </TabBar.Item>
-        </TabBar>
-    )
-}
+            }},
+    },
+    {
+        initialRouteName: 'One',
+        activeColor: "#000",
+        navigationOptions: {
+            tabBarVisible: false,
+        },
+        barStyle: { backgroundColor: '#fff' },
+    },
+);
 
 const styles = StyleSheet.create({
-    tinyLogo: {
+    icon: {
         width: 22,
         height: 22,
     }
 })
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
-// export default Home
