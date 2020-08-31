@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View, Text, Image } from 'react-native'
-import { TabBar, Icon } from '@ant-design/react-native';
+import { TabBar, Icon, Button } from '@ant-design/react-native';
 import { connect } from 'react-redux'
 import { changeTab } from './actions'
 
@@ -18,16 +18,22 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const Home = ({ changeTab }) => {
+const Home = ({ changeTab, navigation }) => {
+    // navigation
     const [tab, setTab] = useState(1)
 
-    const renderTab = (tab) => (
-        <View>
-            <Text>
-                这是 {tab} 模板！
-            </Text>
-        </View>
-    )
+    const renderTab = (tab) => {
+        return (
+            <View>
+                <Text>
+                    这是 {tab} 模板！
+                </Text>
+                <Button onPress={() => {
+                    return navigation.push('Todo')
+                }}>home</Button>
+            </View>
+        )
+    }
     return (
         <TabBar
         unselectedTintColor="#949494"

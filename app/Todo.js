@@ -42,6 +42,9 @@ const Apps = ({list, addList, removeList, resetList, navigation}) => {
   const goHome = () => {
     navigation.push('Home')
   }
+  const login = () => {
+    navigation.push(false ? 'Home' : 'Login')
+  }
   return(
     <SafeAreaView style={styles.container}>
       <View>
@@ -61,6 +64,7 @@ const Apps = ({list, addList, removeList, resetList, navigation}) => {
       </View>
       <Button type="default" onPress={() => resetFun()}>reset</Button>
       <Button type="default" onPress={() => goHome()}>home</Button>
+      <Button type="default" onPress={() => login()}>login</Button>
     </SafeAreaView>
   )
 }
