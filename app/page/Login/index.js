@@ -2,15 +2,26 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native'
 import { List, InputItem,WingBlank, Button } from '@ant-design/react-native';
 
+import LoginApi from '../../api/Login'
+
 export default Login = ({navigation}) => {
     const [name, setname] = useState('')
     const [password, setpassword] = useState('')
+    const [isLogin, setisLogin] = useState(false)
     const Login = () => {
         let params = {
             name: name,
             password: password
         }
-        alert(JSON.stringify(params))
+        setisLogin(true)
+        LoginApi.test().then(res => {
+            console.log(res)
+            setTimeout(() => {
+                setisLogin(false)
+            }, 3000);
+        }).catch(err => {
+            setisLogin(false)
+        })
     }
     const Close = () => {
         navigation.navigate('Home')
@@ -40,8 +51,8 @@ export default Login = ({navigation}) => {
                         onChange={(value) => setpassword(value)}
                     >密码</InputItem>
                     <Button
-                        loading={false}
-                        disabled={false}
+                        loading={isLogin}
+                        disabled={isLogin}
                         style={styles.button}
                         type="primary"
                         onPress={() => Login()}
