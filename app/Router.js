@@ -1,6 +1,6 @@
 import React from 'react'
 import {createAppContainer} from 'react-navigation'
-import {createStackNavigator} from 'react-navigation-stack'
+import {createStackNavigator, TransitionPresets} from 'react-navigation-stack'
 
 import Home from './Home'
 import Todo from './Todo'
@@ -18,11 +18,15 @@ const router = createStackNavigator({
         screen: Login,
         navigationOptions: ({navigation}) => ({
             headerShown: false,
+            ...TransitionPresets.ModalSlideFromBottomIOS,
         })
     }
 },
 {
-    initialRouteName: 'Login'
+    initialRouteName: 'Login',
+    defaultNavigationOptions: {
+        ...TransitionPresets.DefaultTransition,
+    }
 });
 
 const Router = createAppContainer(router)
