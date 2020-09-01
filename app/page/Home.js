@@ -13,36 +13,46 @@ export default createMaterialBottomTabNavigator(
         One: { screen: One,
             navigationOptions:{
                 tabBarLabel: '首页',
-                tabBarIcon: (() => (
-                    <View>
-                        <Image style={styles.icon} source={require('../images/home.png')}/> 
-                    </View>
-                ))
+                tabBarIcon: (({ focused }) => {
+                    return (
+                        <View>
+                            {
+                                !focused ? (<Image style={styles.icon} source={require('../images/home.png')}/>) : (<Image style={styles.icon} source={require('../images/homeSelect.png')}/> )
+                            }
+                        </View>
+                    )
+                })
             }},
         Two: { screen: Two,
             navigationOptions:{
                 tabBarLabel: '列表1',
-                tabBarIcon: (() => (
+                tabBarIcon: (({ focused }) => (
                     <View>
-                        <Image style={styles.icon} source={require('../images/list.png')}/> 
+                        {
+                            !focused ? (<Image style={styles.icon} source={require('../images/list.png')}/>) : (<Image style={styles.icon} source={require('../images/listSelect.png')}/> ) 
+                        }
                     </View>
                 ))
             }},
         Three: { screen: Three,
             navigationOptions:{
-                tabBarLabel: '列表1',
-                tabBarIcon: (() => (
+                tabBarLabel: '列表2',
+                tabBarIcon: (({ focused }) => (
                     <View>
-                        <Image style={styles.icon} source={require('../images/detail.png')}/> 
+                        {
+                            !focused ? (<Image style={styles.icon} source={require('../images/detail.png')}/>) : (<Image style={styles.icon} source={require('../images/detailSelect.png')}/> )
+                        }
                     </View>
                 ))
             }},
         Four: { screen: Four,
             navigationOptions:{
                 tabBarLabel: '我的',
-                tabBarIcon: (() => (
+                tabBarIcon: (({ focused }) => (
                     <View>
-                        <Image style={styles.icon} source={require('../images/my.png')}/> 
+                        {
+                            !focused ? (<Image style={styles.icon} source={require('../images/my.png')}/>) : (<Image style={styles.icon} source={require('../images/mySelect.png')}/> )
+                        }
                     </View>
                 )),
                 tabBarOnPress: ({navigation, defaultHandler}) => {
@@ -56,10 +66,8 @@ export default createMaterialBottomTabNavigator(
     },
     {
         initialRouteName: 'One',
-        activeColor: "#000",
-        navigationOptions: {
-            tabBarVisible: false,
-        },
+        activeColor: "#007aff",
+        shifting: false, // 启用tab切换动画
         barStyle: { backgroundColor: '#fff' },
     },
 );
