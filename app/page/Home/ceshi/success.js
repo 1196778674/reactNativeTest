@@ -1,22 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Text, View, Image, StyleSheet } from 'react-native'
 import { Result, Button } from '@ant-design/react-native'
-import { connect } from 'react-redux'
-import { changeStep } from '../../../actions/steps';
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        step: state.Reduce.step
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        changeStep: (num) => {
-            dispatch(changeStep(num))
-        }
-    }
-}
 
 const Success = ({changeStep, step}) => {
 
@@ -47,4 +31,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Success)
+export default Success

@@ -1,22 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Text, View, SafeAreaView, StyleSheet } from 'react-native'
 import { Steps } from '@ant-design/react-native'
-import { connect } from 'react-redux'
-import { changeStep } from '../../../actions/steps';
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        step: state.Reduce.step
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        changeStep: (num) => {
-            dispatch(changeStep(num))
-        }
-    }
-}
 
 const Step = Steps.Step;
 const Lists = ({ navigation, step, changeStep }) => {
@@ -54,4 +38,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Lists)
+export default Lists

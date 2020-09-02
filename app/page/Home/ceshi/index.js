@@ -2,10 +2,18 @@ import React, { useState } from 'react'
 import { Text, View, SafeAreaView, StyleSheet } from 'react-native'
 import { WingBlank, WhiteSpace } from '@ant-design/react-native'
 import { connect } from 'react-redux'
+import { changeStep } from '../../../actions/steps';
 
 const mapStateToProps = (state, ownProps) => {
     return {
         step: state.Reduce.step
+    }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        changeStep: (num) => {
+            dispatch(changeStep(num))
+        }
     }
 }
 
@@ -21,9 +29,9 @@ const Index = ({ navigation, step, changeStep }) => {
                     <Text style={styles.title}>测试环境发布</Text>
                 </View>
                 <WhiteSpace/>
-                {step === 1 && (<Sub/>)}
-                {step === 2 && (<Steps/>)}
-                {step === 3 && (<Success/>)}
+                {step === 1 && (<Sub step={step} changeStep={changeStep}/>)}
+                {step === 2 && (<Steps step={step} changeStep={changeStep}/>)}
+                {step === 3 && (<Success step={step} changeStep={changeStep}/>)}
             </WingBlank>
         </SafeAreaView>
     )
@@ -38,4 +46,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps)(Index)
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

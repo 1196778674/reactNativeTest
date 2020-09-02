@@ -1,22 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Text, View, SafeAreaView, StyleSheet, FlatList} from 'react-native'
 import { List, Picker, InputItem, Button, Modal } from '@ant-design/react-native'
-import { connect } from 'react-redux'
-import { changeStep } from '../../../actions/steps';
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-        step: state.Reduce.step
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        changeStep: (num) => {
-            dispatch(changeStep(num))
-        }
-    }
-}
 
 
 const Alert = Modal.alert
@@ -184,4 +168,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sub)
+export default Sub
