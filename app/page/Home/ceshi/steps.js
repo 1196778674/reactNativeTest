@@ -21,20 +21,21 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const Step = Steps.Step;
 const Lists = ({ navigation, step, changeStep }) => {
     const stepsArr = [{title:'第1步', description: '第1步已完成'},{title:'第2步', description: '第2步已完成'},{title:'第3步', description: '第3步已完成'},{title:'第4步', description: '第4步已完成'},{title:'第5步', description: '第5步已完成'}]
-
-    const [state, setstate] = useState(0)
+    const time = useRef(0)
+    const [state, setstate] = useState(time.current)
 
     useEffect(() => {
         let timeout = setTimeout(() => {
             setstate(state+1)
-        }, 2000)
+        }, 1000);
         if(state >= 4) {
             changeStep(step+1)
-        }
-        return () => {
-            clearTimeout(timeout)
+            return () => {
+                clearTimeout(timeout)
+            }
         }
     }, [state])
+
     return (
         <View style={styles.lists}>
             <Steps size="lg" current={state}>

@@ -1,6 +1,6 @@
 import { CHANGE_STEP } from '../actions/actionType'
 const initState = {
-    step: 3
+    step: 1
 }
 const reducer = {
     [CHANGE_STEP](state, text){
