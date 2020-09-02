@@ -2,7 +2,7 @@ import React from 'react'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import { StyleSheet, View, Image } from 'react-native'
 
-import One from './Home/one'
+import Index from './Home/ceshi/index'
 import Two from './Home/two'
 // import Three from './Home/three'
 import Four from './Home/four'
@@ -10,7 +10,7 @@ import Four from './Home/four'
 
 export default createMaterialBottomTabNavigator(
     {
-        One: { screen: One,
+        One: { screen: Index,
             navigationOptions:{
                 tabBarLabel: '测试环境',
                 tabBarIcon: (({ focused }) => {
