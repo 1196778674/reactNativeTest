@@ -4,7 +4,7 @@ import { StyleSheet, View, Image } from 'react-native'
 
 import One from './Home/one'
 import Two from './Home/two'
-import Three from './Home/three'
+// import Three from './Home/three'
 import Four from './Home/four'
 
 
@@ -12,7 +12,7 @@ export default createMaterialBottomTabNavigator(
     {
         One: { screen: One,
             navigationOptions:{
-                tabBarLabel: '首页',
+                tabBarLabel: '测试环境',
                 tabBarIcon: (({ focused }) => {
                     return (
                         <View>
@@ -25,26 +25,26 @@ export default createMaterialBottomTabNavigator(
             }},
         Two: { screen: Two,
             navigationOptions:{
-                tabBarLabel: '列表1',
+                tabBarLabel: '线上环境',
                 tabBarIcon: (({ focused }) => (
                     <View>
                         {
-                            !focused ? (<Image style={styles.icon} source={require('../images/list.png')}/>) : (<Image style={styles.icon} source={require('../images/listSelect.png')}/> ) 
+                            !focused ? (<Image style={styles.icon} source={require('../images/detail.png')}/>) : (<Image style={styles.icon} source={require('../images/detailSelect.png')}/> ) 
                         }
                     </View>
                 ))
             }},
-        Three: { screen: Three,
-            navigationOptions:{
-                tabBarLabel: '列表2',
-                tabBarIcon: (({ focused }) => (
-                    <View>
-                        {
-                            !focused ? (<Image style={styles.icon} source={require('../images/detail.png')}/>) : (<Image style={styles.icon} source={require('../images/detailSelect.png')}/> )
-                        }
-                    </View>
-                ))
-            }},
+        // Three: { screen: Three,
+        //     navigationOptions:{
+        //         tabBarLabel: '列表2',
+        //         tabBarIcon: (({ focused }) => (
+        //             <View>
+        //                 {
+        //                     !focused ? (<Image style={styles.icon} source={require('../images/detail.png')}/>) : (<Image style={styles.icon} source={require('../images/detailSelect.png')}/> )
+        //                 }
+        //             </View>
+        //         ))
+        //     }},
         Four: { screen: Four,
             navigationOptions:{
                 tabBarLabel: '我的',
