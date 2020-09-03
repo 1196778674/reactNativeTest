@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 import Sub from './sub';
-import Steps from './steps';
-import Success from './success';
+import Steps from '../../../component/steps';
+import Success from '../../../component/success';
 const Index = ({ navigation, step, changeStep }) => {
     
     return (

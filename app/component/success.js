@@ -11,7 +11,7 @@ const Success = ({changeStep, step}) => {
             style={styles.result}
             img={
                 <Image 
-                source={require('../../../images/success.png')}
+                source={require('../images/success.png')}
                 />
             }
             title="发布成功"

@@ -10,9 +10,9 @@ import Four from './Home/four'
 
 export default createMaterialBottomTabNavigator(
     {
-        One: { screen: Index,
+        One: { screen: Two,
             navigationOptions:{
-                tabBarLabel: '测试环境',
+                tabBarLabel: '线上环境',
                 tabBarIcon: (({ focused }) => {
                     return (
                         <View>
@@ -23,9 +23,9 @@ export default createMaterialBottomTabNavigator(
                     )
                 })
             }},
-        Two: { screen: Two,
+        Two: { screen: Index,
             navigationOptions:{
-                tabBarLabel: '线上环境',
+                tabBarLabel: '测试环境',
                 tabBarIcon: (({ focused }) => (
                     <View>
                         {
