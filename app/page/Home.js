@@ -23,7 +23,7 @@ export default createMaterialBottomTabNavigator(
                     )
                 }),
                 tabBarOnPress: ({ navigation }) => {
-                    window.changeStepOn(1)
+                    !!window.changeStepOn && window.changeStepOn(1)
                     navigation.navigate('One')
                 }
             }},
@@ -38,7 +38,7 @@ export default createMaterialBottomTabNavigator(
                     </View>
                 )),
                 tabBarOnPress: ({ navigation }) => {
-                    window.changeStep(1)
+                    !!window.changeStep && window.changeStep(1)
                     navigation.navigate('Two')
                 }
             }},

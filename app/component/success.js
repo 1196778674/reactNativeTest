@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Text, View, Image, StyleSheet } from 'react-native'
 import { Result, Button } from '@ant-design/react-native'
 
-const Success = ({changeStep, step}) => {
+const Success = ({changeStep, changeStepOn}) => {
 
     const [state, setstate] = useState(0)
+    const intoHome = () => {
+        !!changeStep && changeStep(1)
+        !!changeStepOn && changeStepOn(1)
+    }
     return (
         <View style={styles.lists}>
         <Result
@@ -17,7 +21,7 @@ const Success = ({changeStep, step}) => {
             title="发布成功"
             message="提交内容已成功发布"
         />
-        <Button style={styles.button} type="primary" onPress={() => changeStep(1)}>继续发布</Button>
+        <Button style={styles.button} type="primary" onPress={() => intoHome()}>继续发布</Button>
         </View>
     )
 }

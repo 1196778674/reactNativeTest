@@ -3,7 +3,6 @@ import { Text, View, SafeAreaView, StyleSheet } from 'react-native'
 import { WingBlank, WhiteSpace } from '@ant-design/react-native'
 import { connect } from 'react-redux'
 import { changeStep } from '../../../actions/steps';
-import Store from '@react-native-community/async-storage';
 
 const mapStateToProps = (state, ownProps) => {
     return {

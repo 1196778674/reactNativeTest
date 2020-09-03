@@ -48,8 +48,8 @@ const Sub = ({ navigation, step, changeStep }) => {
             tags,
             setname
         }
-        // Toast.fail('功能暂未开通!!!', 1);
-        // return
+        Toast.fail('功能暂未开通!!!', 1);
+        return
         Alert('点击确认即可发布', '请认真确认发布消息!', [{
             text: '取消', onPress: () => {}
         }, {
