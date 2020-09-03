@@ -21,7 +21,11 @@ export default createMaterialBottomTabNavigator(
                             }
                         </View>
                     )
-                })
+                }),
+                tabBarOnPress: ({ navigation }) => {
+                    window.changeStepOn(1)
+                    navigation.navigate('One')
+                }
             }},
         Two: { screen: Index,
             navigationOptions:{
@@ -32,7 +36,11 @@ export default createMaterialBottomTabNavigator(
                             !focused ? (<Image style={styles.icon} source={require('../images/detail.png')}/>) : (<Image style={styles.icon} source={require('../images/detailSelect.png')}/> ) 
                         }
                     </View>
-                ))
+                )),
+                tabBarOnPress: ({ navigation }) => {
+                    window.changeStep(1)
+                    navigation.navigate('Two')
+                }
             }},
         // Three: { screen: Three,
         //     navigationOptions:{

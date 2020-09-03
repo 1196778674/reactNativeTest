@@ -9,9 +9,9 @@ const Lists = ({ navigation, step, changeStep }) => {
     const [state, setstate] = useState(time.current)
 
     useEffect(() => {
-        let timeout = setTimeout(() => {
-            setstate(state+1)
-        }, 1000);
+        // let timeout = setTimeout(() => {
+        //     setstate(state+1)
+        // }, 1000);
         if(state >= 4) {
             changeStep(step+1)
             return () => {

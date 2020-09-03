@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const Two = ({ stepOn, changeStepOn }) => {
+    window.changeStepOn = changeStepOn
     return (
         <SafeAreaView>
             <Form/>
