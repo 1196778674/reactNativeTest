@@ -2,8 +2,8 @@ import React from 'react'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import { StyleSheet, View, Image } from 'react-native'
 
-import Index from './Home/ceshi/index'
-import Two from './Home/two'
+import Index from './Home/ceshi'
+import Two from './Home/online'
 // import Three from './Home/three'
 import Four from './Home/four'
 
@@ -67,7 +67,7 @@ export default createMaterialBottomTabNavigator(
     {
         initialRouteName: 'One',
         activeColor: "#007aff",
-        shifting: false, // 启用tab切换动画
+        shifting: false, 
         barStyle: { backgroundColor: '#fff' },
     },
 );

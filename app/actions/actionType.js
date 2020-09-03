@@ -5,3 +5,4 @@ export const CHANGE_TAB = 'CHANGE_TAB'
 
 // 发布流程1、2、3步
 export const CHANGE_STEP = 'CHANGE_STEP'
+export const CHANGE_STEP_ON = 'CHANGE_STEP_ON'
