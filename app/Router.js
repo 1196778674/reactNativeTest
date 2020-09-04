@@ -18,12 +18,12 @@ const router = createStackNavigator({
         screen: Login,
         navigationOptions: ({navigation}) => ({
             headerShown: false,
-            ...TransitionPresets.ModalSlideFromBottomIOS,
+            ...TransitionPresets.ModalPresentationIOS,
         })
     }
 },
 {
-    initialRouteName: 'Login',
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
         ...TransitionPresets.DefaultTransition,
     }

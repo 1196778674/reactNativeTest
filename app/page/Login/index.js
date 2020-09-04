@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native'
-import { List, InputItem,WingBlank, Button, Checkbox } from '@ant-design/react-native';
+import { List, InputItem,WingBlank, Button, Checkbox, Toast } from '@ant-design/react-native';
 import Store from '@react-native-community/async-storage'
 
 const AgreeItem = Checkbox.AgreeItem;
-
-import LoginApi from '../../api/Login'
 
 export default Login = ({navigation}) => {
     const [name, setname] = useState('')
@@ -30,15 +28,16 @@ export default Login = ({navigation}) => {
             name: name,
             password: password
         }
+        if(!params.name.trim() || !params.password.trim()) {
+            Toast.fail('账号或密码为空', 1);
+            return
+        }
         setisLogin(true)
-        LoginApi.test().then(res => {
-            console.log(res)
-            setTimeout(() => {
-                setisLogin(false)
-            }, 3000);
-        }).catch(err => {
+        setTimeout(() => {
             setisLogin(false)
-        })
+            Store.setItem('token', 'xxxxxxxxxxxx')
+            Close()
+        }, 3000);
     }
     const Close = () => {
         navigation.navigate('Home')
@@ -49,7 +48,8 @@ export default Login = ({navigation}) => {
             password: password
         }
         let check = e.target.checked
-        if(check) {
+        setagree(check)
+        if(check && params.name && params.password) {
             Store.setItem('login', JSON.stringify(params))
         } else {
             Store.removeItem('login')

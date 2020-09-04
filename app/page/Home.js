@@ -1,6 +1,7 @@
 import React from 'react'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 import { StyleSheet, View, Image } from 'react-native'
+import Store from '@react-native-community/async-storage'
 
 import Index from './Home/ceshi'
 import Two from './Home/online'
@@ -64,11 +65,15 @@ export default createMaterialBottomTabNavigator(
                     </View>
                 )),
                 tabBarOnPress: ({navigation, defaultHandler}) => {
-                    if(true) {
-                        navigation.navigate("Login")
-                    } else {
-                        defaultHandler()
-                    }
+                    Store.getItem('token', (e, res) => {
+                        if(e) return
+                        let token = res
+                        if(!!token) {
+                            defaultHandler()
+                        } else {
+                            navigation.navigate("Login")
+                        }
+                    })
                 }
             }},
     },

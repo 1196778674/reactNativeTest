@@ -19,6 +19,9 @@ const Lists = ({ step, changeStep, changeStepOn }) => {
                 clearTimeout(timeout)
             }
         }
+        return () => {
+            clearTimeout(timeout)
+        }
     }, [state])
 
     return (
