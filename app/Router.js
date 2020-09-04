@@ -23,7 +23,7 @@ const router = createStackNavigator({
     }
 },
 {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
     defaultNavigationOptions: {
         ...TransitionPresets.DefaultTransition,
     }
