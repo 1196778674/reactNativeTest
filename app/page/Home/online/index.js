@@ -25,8 +25,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const Two = ({ stepOn, changeStepOn, navigation }) => {
     window.changeStepOn = changeStepOn
     useEffect(() => {
+        let id = !!navigation.state.params && navigation.state.params.id || ''
         console.log('\n\n------ begin: navigation ------')
-        console.log(navigation.state.params.id)
+        console.log(id)
         console.log('------ end: navigation ------\n\n')
     }, [])
     return (
