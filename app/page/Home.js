@@ -78,7 +78,7 @@ export default createMaterialBottomTabNavigator(
             }},
     },
     {
-        initialRouteName: 'One',
+        initialRouteName: 'Four',
         activeColor: "#007aff",
         shifting: false, 
         barStyle: { backgroundColor: '#fff' },
