@@ -8,7 +8,7 @@ const Brief = Item.Brief;
 
 const Four = ({ navigation }) => {
     const goSuccess = (id) => {
-        navigation.navigate("One")
+        navigation.navigate({routeName: "One", params: {id: 1}})
         !!window.changeStepOn && window.changeStepOn(3)
     }
     const goIng = (id) => {

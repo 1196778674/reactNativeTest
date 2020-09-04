@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View, SafeAreaView, StyleSheet } from 'react-native'
 import { WingBlank, WhiteSpace } from '@ant-design/react-native'
 import { connect } from 'react-redux'
@@ -22,9 +22,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const Two = ({ stepOn, changeStepOn }) => {
+const Two = ({ stepOn, changeStepOn, navigation }) => {
     window.changeStepOn = changeStepOn
-
+    useEffect(() => {
+        console.log('\n\n------ begin: navigation ------')
+        console.log(navigation.state.params.id)
+        console.log('------ end: navigation ------\n\n')
+    }, [])
     return (
         <SafeAreaView>
             <WingBlank>

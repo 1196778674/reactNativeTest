@@ -35,3 +35,8 @@ const router = createStackNavigator({
 const Router = createAppContainer(router)
 export default Router
 
+路由传参
+navigation.navigate({routeName: "One", params: {id: 1}})
+获取参数
+navigation.state.params.id
+
